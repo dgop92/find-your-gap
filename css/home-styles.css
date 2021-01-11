@@ -1,0 +1,11 @@
+.footer {
+  background-color: var(--clr-gray);
+}
+
+.footer__title {
+  font-size: 1rem;
+  margin: 2.3rem 0;
+  color: var(--clr-white-2);
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
+}
