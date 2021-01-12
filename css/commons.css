@@ -1,8 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
-
 * {
   box-sizing: border-box;
   margin: 0;
@@ -13,11 +11,13 @@
   --bg-color: #f7f9f9;
   --primary-color: #272932;
   --secondary-dark-color: #3a5f7e;
+  --secondary-dark-hover: #426e92;
   --secondary-light-color: #5992c3;
   --secondary-lght-hover: #5085b3;
   
   --primary-text: #333333;
   --secondary-text: #696969;
+  --text-danger: #cb2431;
 
   --clr-white: #ffffff;
   --clr-white-2: #f7f7f7;
@@ -57,6 +57,29 @@ ul {
   background-color: white;
   box-shadow: var(--dark-shadow);
   border-radius: 2.1rem;
+}
+
+.base-btn{
+  padding: 0.5rem 1rem;
+
+  font-family: "Open Sans", sans-serif;
+  font-size: 1rem;
+  color: white;
+
+  background: var(--secondary-color);
+  border-color: transparent;
+  outline: none;
+  border-radius: 0.4rem;
+
+  cursor: pointer;
+}
+
+.primary-btn{
+  background-color: var(--secondary-dark-color);
+}
+
+.primary-btn:hover{
+  background-color: var(--secondary-dark-hover);
 }
 
 /* SideBar Styles */
