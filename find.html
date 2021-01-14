@@ -11,11 +11,13 @@
     <script src="https://unpkg.com/micromodal@0.4.6/dist/micromodal.min.js"></script>
 
     <link rel="stylesheet" href="/css/commons.css" />
-    <link rel="stylesheet" href="/css/forms-styles.css" />
-    <link rel="stylesheet" href="/css/modal-base-styles.css" />
+    <link rel="stylesheet" href="/css/forms.css" />
+    <link rel="stylesheet" href="/css/modal-base.css" />
     <link rel="stylesheet" href="/css/add-user-modal.css" />
+    <link rel="stylesheet" href="/css/find-styles.css">
 
     <script defer src="/js/app.js"></script>
+    <script defer src="/js/find.js"></script>
     <title>FindYourGap</title>
   </head>
   <body>
@@ -58,7 +60,68 @@
 
     <!-- View Content -->
 
-    <main class="main-wrapper"></main>
+    <main class="main-wrapper section-center">
+
+      <section class="find-container users-card card-base">
+        <h2 class="find-container__title">Usuarios</h2>
+        <hr class="primary-solid">
+        <div class="users-container">
+          <div class="user-item">
+            <i class="fas fa-times"></i>
+            <p>dpuchej</p>
+          </div>
+          <div class="user-item">
+            <i class="fas fa-times"></i>
+            <p>bazzass</p>
+          </div>
+          <div class="user-item">
+            <i class="fas fa-times"></i>
+            <p>betnacuber</p>
+          </div>
+          <div class="user-item">
+            <i class="fas fa-times"></i>
+            <p>uwuwas</p>
+          </div>
+        </div>
+        <button data-micromodal-trigger="modal-add-user" id="add-modal-user" class="floating-button">
+          <i class="fas fa-plus"></i>
+        </button>
+      </section>
+
+      <section class="find-container gaps-card card-base">
+        <h2 class="find-container__title">Huecos</h2>
+        <hr class="primary-solid">
+        <div class="gap-container">
+          <div class="gap-item">
+            <p class="gap-item__title">Lunes - 8:30 AM</p>
+            <p class="gap-item__extra-info">Avg: Sd:</p>
+          </div><!-- gap-item__extra-info-active -->
+          <div class="gap-item">
+            <p class="gap-item__title">Martes - 8:30 AM</p>
+            <p class="gap-item__extra-info">Avg: 2 Sd:3</p>
+          </div>
+          <div class="gap-item">
+            <p class="gap-item__title">Jueves - 8:30 AM</p>
+            <p class="gap-item__extra-info gap-item__extra-info-active">
+              Avg: 2 Sd:3
+            </p>
+          </div>
+          <div class="gap-item">
+            <p class="gap-item__title">Jueves - 8:30 AM</p>
+            <p class="gap-item__extra-info gap-item__extra-info-active">
+              Avg: 2 Sd:3
+            </p>
+          </div>
+        </div>
+        
+        <button id="add-modal-settings" class="floating-button">
+          <i class="fas fa-filter"></i>
+        </button>
+      </section>
+
+    </main>
+
+    <!-- Add user modal -->
 
     <div id="modal-add-user" class="modal micromodal-slide" aria-hidden="true">
       <div class="modal__overlay" tabindex="-1" data-micromodal-close>

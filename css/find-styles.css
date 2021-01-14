@@ -1,0 +1,143 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400&display=swap");
+
+/* .section-center {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  min-height: 89vh;
+  align-items: center;
+  justify-content: center;
+} */
+
+.section-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.find-container {
+  display: flex;
+  flex-direction: column;
+  width: 90vw;
+  max-width: 550px;
+  margin: 1.5rem 2rem;
+  height: 65vh;
+  position: relative;
+}
+
+.find-container__title {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 1.3rem;
+  padding: 1.5rem 0 1.5rem 2rem;
+}
+
+.primary-solid {
+  border-top: 1px solid var(--secondary-light-color);
+  margin: 0 1.5rem;
+}
+
+/* User Card Styles */
+
+.users-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 1rem 1.5rem;
+}
+
+.user-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  padding: 0.5rem 1rem;
+  margin: 0.5rem;
+
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  color: var(--primary-text);
+
+  background: transparent;
+  border: 1px solid var(--clr-light-gray);
+  border-radius: 1rem;
+}
+
+.user-item i {
+  margin-right: 10px;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.user-item p {
+  font-size: 0.9rem;
+}
+
+/* Gap Card Styles */
+
+.gap-container {
+  padding: 1rem 1.5rem;
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+.gap-item {
+  display: flex;
+  flex-direction: column;
+
+  padding: 0.8rem 1rem;
+  margin: 0.5rem;
+
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+
+  background: transparent;
+  border: 1px solid var(--clr-light-gray);
+  border-radius: 1rem;
+}
+
+.gap-item__extra-info {
+  display: none;
+  font-size: 0.8rem;
+  padding: 0.2rem 0;
+  color: var(--secondary-text);
+}
+
+.gap-item__extra-info-active {
+  display: block;
+}
+
+@media (max-width: 950px) {
+  .section-center {
+    flex-direction: column;
+  }
+
+  .find-container {
+    margin: 2rem 0;
+  }
+}
+
+
+.floating-button{
+  position: absolute;
+  padding: 1rem;
+  border-radius: 50%;
+  background-color: var(--secondary-dark-color);
+  outline: none;
+  border: none;
+
+  bottom: -3%;
+  right: -3%;
+
+  cursor: pointer;
+}
+
+.floating-button i{
+  font-size: 1.5rem;
+  color: var(--clr-white);
+}
+
+.floating-button:hover{
+  background-color: var(--secondary-dark-hover);
+}
