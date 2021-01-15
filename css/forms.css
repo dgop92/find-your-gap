@@ -28,6 +28,10 @@
   border: 1px solid var(--secondary-light-color);
 }
 
+.input-container input:focus-visible{
+  border-color: var(--secondary-light-color);
+}
+
 .error-message {
   font-family: "Open Sans", sans-serif;
   font-size: 0.8rem;

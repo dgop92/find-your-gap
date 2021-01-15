@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="/css/find-styles.css">
 
     <script defer src="/js/app.js"></script>
-    <script defer src="/js/find.js"></script>
+    <script type="module" defer src="/js/find.js"></script>
     <title>FindYourGap</title>
   </head>
   <body>
@@ -66,7 +66,7 @@
         <h2 class="find-container__title">Usuarios</h2>
         <hr class="primary-solid">
         <div class="users-container">
-          <div class="user-item">
+          <!-- <div class="user-item">
             <i class="fas fa-times"></i>
             <p>dpuchej</p>
           </div>
@@ -81,7 +81,7 @@
           <div class="user-item">
             <i class="fas fa-times"></i>
             <p>uwuwas</p>
-          </div>
+          </div> -->
         </div>
         <button data-micromodal-trigger="modal-add-user" id="add-modal-user" class="floating-button">
           <i class="fas fa-plus"></i>
@@ -91,11 +91,11 @@
       <section class="find-container gaps-card card-base">
         <h2 class="find-container__title">Huecos</h2>
         <hr class="primary-solid">
-        <div class="gap-container">
+        <!-- <div class="gap-container">
           <div class="gap-item">
             <p class="gap-item__title">Lunes - 8:30 AM</p>
             <p class="gap-item__extra-info">Avg: Sd:</p>
-          </div><!-- gap-item__extra-info-active -->
+          </div>
           <div class="gap-item">
             <p class="gap-item__title">Martes - 8:30 AM</p>
             <p class="gap-item__extra-info">Avg: 2 Sd:3</p>
@@ -112,7 +112,7 @@
               Avg: 2 Sd:3
             </p>
           </div>
-        </div>
+        </div> -->
         
         <button id="add-modal-settings" class="floating-button">
           <i class="fas fa-filter"></i>
@@ -148,8 +148,8 @@
               id="add-user-form"
             >
               <div class="input-container">
-                <label for="username">Usuario</label>
-                <input required type="text" name="username" />
+                <label for="user">Usuario</label>
+                <input required type="text" name="user" />
                 <p class="error-message"></p>
               </div>
 

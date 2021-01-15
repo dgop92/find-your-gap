@@ -1,5 +1,4 @@
-const registerForm = document.getElementById("register-form");
-const inputs = registerForm.querySelectorAll(".input-container input");
+import HTML5FormValidator from "/js/utils.js";
 
 const URL_API = "http://127.0.0.1:8000/register/";
 const DANGER_COLOR = "#d32f2f"
@@ -26,7 +25,7 @@ function showRequestErrors(errors) {
   }
 
   for (const key in errors) {
-    const input = document.querySelector(`input[name="${key}"]`);
+    const input = html5form.getInputByName(key)
     input.parentElement.classList.add("invalid-input-container");
     input.nextElementSibling.innerHTML = createRequestErrorMessages(
       errors[key]
@@ -59,41 +58,18 @@ async function registerUser(myBody) {
   }
 }
 
-/* OnSubmit form */
-
-registerForm.onsubmit = function (e) {
-  e.preventDefault();
-
-  const form_data = {};
-
-  inputs.forEach(function (input) {
-    form_data[input.name] = input.value;
-  });
-
-  registerUser(form_data);
-};
-
-/* client validations */
-
-inputs.forEach(function (input) {
-  function checkValidity() {
-    const inputContainer = input.parentElement;
-
-    if (!input.validity.valid) {
-      inputContainer.classList.add("invalid-input-container");
-      input.nextElementSibling.innerHTML = input.validationMessage;
-    } else {
-      inputContainer.classList.remove("invalid-input-container");
-      input.nextElementSibling.innerHTML = "";
-    }
+const html5form = new HTML5FormValidator(
+  document.getElementById("register-form"),
+  (input) => {
+    input.parentElement.classList.remove("invalid-input-container");
+    input.nextElementSibling.innerHTML = "";
+  },
+  (input) => {
+    input.parentElement.classList.add("invalid-input-container");
+    input.nextElementSibling.innerHTML = input.validationMessage;
+  },
+  (data) => {
+    registerUser(data);
   }
-
-  input.addEventListener("input", function (e) {
-    checkValidity();
-  });
-
-  input.addEventListener("invalid", function (e) {
-    e.preventDefault();
-    checkValidity();
-  });
-});
+);
+html5form.init(".input-container input");

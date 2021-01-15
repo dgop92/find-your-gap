@@ -4,6 +4,7 @@
 * {
   box-sizing: border-box;
   margin: 0;
+  -webkit-tap-highlight-color: transparent;
 }
 
 :root {
@@ -32,7 +33,6 @@
 
 html {
   background-color: var(--bg-color);
-  -webkit-tap-highlight-color: transparent;
 }
 
 body{
