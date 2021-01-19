@@ -10,13 +10,16 @@
     ></script>
     <script src="https://unpkg.com/micromodal@0.4.6/dist/micromodal.min.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="dist/snackbar.min.css" /> <script defer src="dist/snackbar.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="dist/snackbar.min.css" />
+    <script defer src="dist/snackbar.min.js"></script>
 
     <link rel="stylesheet" href="/css/commons.css" />
     <link rel="stylesheet" href="/css/forms.css" />
     <link rel="stylesheet" href="/css/modal-base.css" />
     <link rel="stylesheet" href="/css/add-user-modal.css" />
-    <link rel="stylesheet" href="/css/find-styles.css">
+    <link rel="stylesheet" href="/css/settings-modal.css" />
+    <link rel="stylesheet" href="/css/switch.css" />
+    <link rel="stylesheet" href="/css/find-styles.css" />
 
     <script defer src="/js/app.js"></script>
     <script type="module" defer src="/js/find.js"></script>
@@ -63,25 +66,31 @@
     <!-- View Content -->
 
     <main class="main-wrapper section-center">
-
       <section class="find-container users-card card-base">
         <h2 class="find-container__title">Usuarios</h2>
-        <hr class="primary-solid">
+        <hr class="primary-solid" />
         <div class="users-container"></div>
-        <button data-micromodal-trigger="modal-add-user" id="add-modal-user" class="floating-button">
+        <button
+          data-micromodal-trigger="modal-add-user"
+          id="add-modal-user"
+          class="floating-button"
+        >
           <i class="fas fa-plus"></i>
         </button>
       </section>
 
       <section class="find-container gaps-card card-base">
         <h2 class="find-container__title">Huecos</h2>
-        <hr class="primary-solid">
+        <hr class="primary-solid" />
         <div class="gaps-container"></div>
-        <button id="add-modal-settings" class="floating-button">
+        <button
+          data-micromodal-trigger="modal-settings"
+          id="add-modal-settings"
+          class="floating-button"
+        >
           <i class="fas fa-filter"></i>
         </button>
       </section>
-
     </main>
 
     <!-- Add user modal -->
@@ -93,6 +102,7 @@
           role="dialog"
           aria-modal="true"
           aria-labelledby="modal-add-user-title"
+          id="modal-add-user-container"
         >
           <header class="modal__header">
             <h2 class="modal__title" id="modal-add-user-title">
@@ -120,6 +130,91 @@
                 Añadir
               </button>
             </form>
+          </main>
+        </div>
+      </div>
+    </div>
+
+    <!-- Settings modal -->
+
+    <div id="modal-settings" class="modal micromodal-slide" aria-hidden="true">
+      <div class="modal__overlay" tabindex="-1" data-micromodal-close>
+        <div
+          class="modal__container"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="modal-settings-title"
+          id="modal-settings-container"
+        >
+          <header class="modal__header">
+            <h2 class="modal__title" id="modal-settings-title">
+              Configuraciones
+            </h2>
+            <button class="modal__close" aria-label="Close modal">
+              <i class="fas fa-times" data-micromodal-close></i>
+            </button>
+          </header>
+
+          <main class="modal__content" id="modal-setting-content">
+            <!-- Gaps Limit -->
+
+            <div class="setting-item-conatiner">
+              <div class="setting-item__info">
+                <h2 class="setting-item__title">Limite de Huecos</h2>
+                <p class="setting-item__description">
+                  Decide cuantos huecos deseas ver, al especificar un limite
+                </p>
+              </div>
+              <div class="setting-action-container">
+                <input type="number" min=2 pattern="\d*" name="gap-limit" id="gap-limit" />
+              </div>
+            </div>
+
+            <!-- Show avg and sd -->
+
+            <div class="setting-item-conatiner">
+              <div class="setting-item__info">
+                <h2 class="setting-item__title">Mostrar Avg y Sd</h2>
+                <p class="setting-item__description">
+                  El promedio de cercania con las clases es representado con
+                  avg, y la inestabilidad entre las clases de los usuarios es
+                  representado con sd
+                </p>
+              </div>
+              <div class="setting-action-container">
+                <label class="toggle" for="show-avg-sd">
+                  <input
+                    class="toggle__input"
+                    name="show-avg-sd"
+                    type="checkbox"
+                    id="show-avg-sd"
+                  />
+                  <div class="toggle__fill"></div>
+                </label>
+              </div>
+            </div>
+
+            <!-- Ignore sd -->
+
+            <div class="setting-item-conatiner">
+              <div class="setting-item__info">
+                <h2 class="setting-item__title">Calcular sd</h2>
+                <p class="setting-item__description">
+                  Clasificar los huecos teniendo en cuenta la variable sd
+                </p>
+              </div>
+              <div class="setting-action-container">
+                <label class="toggle" for="compute-sd">
+                  <input
+                    class="toggle__input"
+                    name="compute-sd"
+                    type="checkbox"
+                    id="compute-sd"
+                  />
+                  <div class="toggle__fill"></div>
+                </label>
+              </div>
+            </div>
           </main>
         </div>
       </div>

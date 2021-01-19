@@ -1,0 +1,63 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap");
+
+#modal-settings-container {
+  max-width: 600px;
+  width: 100vw;
+}
+
+#modal-setting-content{
+  display: grid;
+  gap: 1rem;
+}
+
+.setting-item-conatiner {
+  display: grid;
+  grid-template-columns: 75% 1fr;
+  gap: 0.5rem;
+  padding: 1.5rem 1rem;
+
+  font-family: "Open Sans", sans-serif;
+  background: transparent;
+  border: 1px solid var(--clr-light-gray);
+  border-radius: 1rem;
+}
+
+.setting-item__info{
+  margin-right: 0.6rem;
+}
+
+.setting-item__title {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.setting-item__description {
+  font-size: 0.9rem;
+  padding: 0.2rem 0;
+  font-weight: 400;
+  color: var(--secondary-text);
+}
+
+.setting-action-container {
+  display: grid;
+  place-items: center;
+}
+
+.setting-action-container input[type="text"],
+.setting-action-container input[type="number"] {
+  width: 85%;
+  color: #333333;
+  border: 1px solid var(--clr-light-gray);
+  box-sizing: border-box;
+  border-radius: 0.5rem;
+  padding: 10px 10px;
+}
+
+.setting-action-container input[type="text"]:hover,
+.setting-action-container input[type="number"]:hover {
+  border: 1px solid var(--secondary-light-color);
+}
+
+.invalid-input{
+  border-color: var(--text-danger);
+}

@@ -56,10 +56,10 @@ export class HTML5FormValidator {
     return currInput; // this is bad, but it cannot happen
   }
 
-  clearInputs(){
-    this.inputs.forEach(input => {
+  clearInputs() {
+    this.inputs.forEach((input) => {
       input.value = "";
-    })
+    });
   }
 }
 
@@ -91,7 +91,7 @@ export class RequestBuilder {
     //timeout
     const controller = new AbortController();
     const id = setTimeout(() => controller.abort(), 8000);
-    this.options["signal"] = controller.signal
+    this.options["signal"] = controller.signal;
 
     try {
       const url = this.baseAPI + endpoint;

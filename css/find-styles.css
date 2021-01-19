@@ -1,14 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400&display=swap");
 
-/* .section-center {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  min-height: 89vh;
-  align-items: center;
-  justify-content: center;
-} */
-
 .section-center {
   display: flex;
   align-items: center;
@@ -114,6 +106,7 @@
   }
 }
 
+/*  Floating button */
 
 .floating-button{
   position: absolute;

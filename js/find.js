@@ -3,23 +3,37 @@ import {
   RequestBuilder,
   FIND_GAP_API,
   DANGER_COLOR,
-  unexceptedErrorSnackBar
+  unexceptedErrorSnackBar,
 } from "/js/utils.js";
 
+import {
+  CheckBoxSetting,
+  InputTextSetting,
+  SettingsMananger,
+} from "/js/gapSettings.js";
+
 MicroModal.init({
-  onShow: (modal) =>
-    document
-      .getElementById(modal.id)
-      .querySelector("input[name='user']")
-      .focus(),
+  onShow: (modal) => {
+    if (modal.id == "modal-add-user") {
+      document
+        .getElementById(modal.id)
+        .querySelector("input[name='user']")
+        .focus();
+    }
+  },
+  onClose: (modal) => {
+    if (modal.id == "modal-settings") {
+      gapOptions = settingsManager.getSettings();
+      updateGaps()
+    } else if (modal.id == "modal-add-user") {
+      userForm.clearInputs();
+    }
+  },
 });
 
 const userContainer = document.querySelector(".users-container");
 const gapsContainer = document.querySelector(".gaps-container");
 const users = new Set();
-const gapOptions = {
-  compute_sd: true,
-};
 // Another aprooch, save in set, then create a method that render what is inside the set
 function addUser(user) {
   const userItem = document.createElement("div");
@@ -33,7 +47,6 @@ function addUser(user) {
     updateGaps();
   });
   userContainer.append(userItem);
-  MicroModal.close("modal-add-user");
 }
 
 function getGapItem(gapItemData) {
@@ -42,9 +55,15 @@ function getGapItem(gapItemData) {
   let gapItemContent = `
       <p class="gap-item__title">${gapItemData.day} - ${gapItemData.hour}</p>
     `;
-  if (gapOptions.compute_sd) {
+  if (gapOptions["show-avg-sd"]) {
+
+    const sdInfo = "sd" in gapItemData ? `- Sd: ${gapItemData.sd}` : ""
+    
     gapItemContent += `
-      <p class="gap-item__extra-info">Avg: ${gapItemData.avg} - Sd: ${gapItemData.sd}</p>`;
+      <p class="gap-item__extra-info">Avg: ${gapItemData.avg} ${sdInfo}</p>
+    `
+
+    /*  - Sd: ${gapItemData.sd ? gapItemData.sd : "Sin Sd"}</p>`; */
   }
 
   gapItem.innerHTML = gapItemContent;
@@ -56,7 +75,8 @@ function updateGaps() {
     const requestBuilder = new RequestBuilder(FIND_GAP_API);
     requestBuilder.setBody({
       usernames: [...users],
-      ...gapOptions,
+      limit: gapOptions["gap-limit"],
+      compute_sd: gapOptions["compute-sd"],
     });
     requestBuilder.makeRequest(
       "POST",
@@ -64,32 +84,33 @@ function updateGaps() {
       async (response) => {
         const data = await response.json();
         if (response.status == 200) {
+          gapsContainer.innerHTML = "";
           data.gaps.forEach((gapItemData) => {
             const gapItem = getGapItem(gapItemData);
             gapsContainer.append(gapItem);
           });
-        }else if(response.status == 400){
+        } else if (response.status == 400) {
           Snackbar.show({
             text: data["usernames"][0],
             backgroundColor: DANGER_COLOR,
             pos: "bottom-right",
             showAction: false,
           });
-        }else{
-          unexceptedErrorSnackBar()
+        } else {
+          unexceptedErrorSnackBar();
         }
       },
       (error) => {
-        unexceptedErrorSnackBar()
-        console.log(error)
+        unexceptedErrorSnackBar();
+        console.log(error);
       }
     );
-  }else{
-    gapsContainer.innerHTML = ""
+  } else {
+    gapsContainer.innerHTML = "";
   }
 }
 
-const html5form = new HTML5FormValidator(
+const userForm = new HTML5FormValidator(
   document.getElementById("add-user-form"),
   (input) => {
     input.parentElement.classList.remove("invalid-input-container");
@@ -104,13 +125,30 @@ const html5form = new HTML5FormValidator(
     if (!users.has(user)) {
       users.add(user);
       addUser(user);
-      html5form.clearInputs()
+      userForm.clearInputs();
       updateGaps();
     } else {
-      const input = html5form.getInputByName("user");
+      const input = userForm.getInputByName("user");
       input.parentElement.classList.add("invalid-input-container");
       input.nextElementSibling.innerHTML = "Ya agregaste a este usuario";
     }
   }
 );
-html5form.init(".input-container input");
+userForm.init(".input-container input");
+
+const settingsManager = new SettingsMananger([
+  new CheckBoxSetting(document.getElementById("show-avg-sd"), false),
+  new CheckBoxSetting(document.getElementById("compute-sd"), true),
+  new InputTextSetting(document.getElementById("gap-limit"), "", {
+    validateSetting: (input) => {
+      if (!input.validity.valid) {
+        input.style = "border-color: var(--text-danger)";
+        return false;
+      } else {
+        input.style = "";
+        return true;
+      }
+    },
+  }),
+]);
+let gapOptions = settingsManager.getSettings();
