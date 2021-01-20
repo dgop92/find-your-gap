@@ -1,3 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap');
+
+.section-center{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-item-container {
+  width: 90vw;
+  max-width: 1200px;
+  margin: 1.5rem 0;
+
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.5rem;
+  padding: 1.5rem 1rem;
+
+  font-family: "Open Sans", sans-serif;
+}
+
+.home-item__info{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1rem 2.5rem;
+}
+
+.home-item__title {
+  padding: 0.2 0rem;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.home-item__description {
+  font-size: 0.9rem;
+  padding: 0.2rem 0;
+  font-weight: 400;
+  color: var(--secondary-text);
+}
+
+.home-item__img-container{
+  /* width: 530px;
+  height: auto; */
+  /* min-height: 260px; */
+}
+
+/* .home-item__img-container img{
+  object-fit: crop;
+} */
+
 .footer {
   background-color: var(--clr-gray);
 }
@@ -8,4 +61,16 @@
   color: var(--clr-white-2);
   font-family: "Montserrat", sans-serif;
   text-align: center;
+}
+
+@media (max-width: 1140px){
+  .home-item-container {  
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+
+  .home-item__img-container{
+    width: 70%;
+  }
 }
