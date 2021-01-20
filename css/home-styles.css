@@ -1,3 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap');
+
+.section-center{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-section {
+  width: 90vw;
+  max-width: 700px;
+  margin: 1.6rem 0;
+  padding: 2rem 0;
+}
+
+
+
+.home-item__info{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1rem 2.5rem;
+
+  font-family: "Open Sans", sans-serif;
+}
+
+.home-item__title {
+  padding: 0.2 0rem;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.home-item__description {
+  font-size: 0.9rem;
+  padding: 0.2rem 0;
+  font-weight: 400;
+  color: var(--secondary-text);
+}
+
 .footer {
   background-color: var(--clr-gray);
 }
@@ -5,7 +46,13 @@
 .footer__title {
   font-size: 1rem;
   margin: 2.3rem 0;
+  padding: 0 1.5rem;
   color: var(--clr-white-2);
   font-family: "Montserrat", sans-serif;
   text-align: center;
+}
+
+.footer__title a{
+  color: inherit;
+  font-weight: bold;
 }

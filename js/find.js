@@ -57,13 +57,12 @@ function getGapItem(gapItemData) {
     `;
   if (gapOptions["show-avg-sd"]) {
 
-    const sdInfo = "sd" in gapItemData ? `- Sd: ${gapItemData.sd}` : ""
+    const sdInfo = "sd" in gapItemData ? `- Sd: ${gapItemData.sd.toFixed(2)}` : ""
     
     gapItemContent += `
-      <p class="gap-item__extra-info">Avg: ${gapItemData.avg} ${sdInfo}</p>
+      <p class="gap-item__extra-info">Avg: ${gapItemData.avg.toFixed(2)} ${sdInfo}</p>
     `
 
-    /*  - Sd: ${gapItemData.sd ? gapItemData.sd : "Sin Sd"}</p>`; */
   }
 
   gapItem.innerHTML = gapItemContent;
