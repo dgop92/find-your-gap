@@ -4,13 +4,13 @@ import {
   FIND_GAP_API,
   DANGER_COLOR,
   unexceptedErrorSnackBar,
-} from "/js/utils.js";
+} from "../js/utils.js";
 
 import {
   CheckBoxSetting,
   InputTextSetting,
   SettingsMananger,
-} from "/js/gapSettings.js";
+} from "../js/gapSettings.js";
 
 MicroModal.init({
   onShow: (modal) => {

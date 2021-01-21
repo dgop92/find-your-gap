@@ -1,7 +1,7 @@
 export const DANGER_COLOR = "#d32f2f";
 export const SUCCESS_COLOR = "#4caf50";
 
-export const FIND_GAP_API = "https://find-your-gap-api.herokuapp.com/";
+export const FIND_GAP_API = "https://find-your-gap-api.herokuapp.com";
 
 export class HTML5FormValidator {
   constructor(html5form, onValidInput, onInvalidInput, onSuccesForm) {

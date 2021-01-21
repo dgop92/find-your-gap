@@ -4,7 +4,8 @@ import {
   FIND_GAP_API,
   DANGER_COLOR,
   SUCCESS_COLOR,
-} from "/js/utils.js";
+  unexceptedErrorSnackBar,
+} from "../js/utils.js";
 
 function createRequestErrorMessages(errors) {
   return errors.reduce(
