@@ -1,0 +1,18 @@
+.base-loader {
+  border-radius: 50%;
+  animation: spin 2s linear infinite;
+  margin: auto;
+}
+
+.login-btn-loader{
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid;
+  border-color: var(--clr-white) transparent transparent;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}

@@ -7,6 +7,16 @@ import {
   unexceptedErrorSnackBar,
 } from "../js/utils.js";
 
+const registerBtn = document.getElementById("register-btn");
+
+function stopRegisterLoader() {
+  registerBtn.innerHTML = "Login";
+}
+
+function startRegisterLoader() {
+  registerBtn.innerHTML = `<div class="base-loader login-btn-loader"></div>`;
+}
+
 function createRequestErrorMessages(errors) {
   return errors.reduce(
     (accumulator, currentValue) => accumulator + "<br>" + currentValue
@@ -37,6 +47,7 @@ function showRequestErrors(errors) {
 function registerUser(registerData) {
   const requestBuilder = new RequestBuilder(FIND_GAP_API);
   requestBuilder.setBody(registerData);
+  startRegisterLoader();
   requestBuilder.makeRequest(
     "POST",
     "/register",
@@ -50,15 +61,19 @@ function registerUser(registerData) {
           showAction: false,
         });
         html5form.clearInputs();
+        stopRegisterLoader();
       } else if (response.status == 400) {
         showRequestErrors(data);
+        stopRegisterLoader();
       } else {
         unexceptedErrorSnackBar();
+        stopRegisterLoader();
       }
     },
     (error) => {
       unexceptedErrorSnackBar();
       console.log(error);
+      stopRegisterLoader();
     }
   );
 }
