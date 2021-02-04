@@ -90,7 +90,7 @@ export class RequestBuilder {
 
     //timeout
     const controller = new AbortController();
-    const id = setTimeout(() => controller.abort(), 12000);
+    const id = setTimeout(() => controller.abort(), 18000);
     this.options["signal"] = controller.signal;
 
     try {
